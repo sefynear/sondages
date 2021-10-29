@@ -18,6 +18,24 @@ class SearchAction extends Action {
 	 */
 	public function run() {
 		/* TODO  */
+		if(!empty($_POST['keyword'])){
+			$keyword = htmlentities($_POST['keyword']);
+			$this->database->loadSurveysByKeyword($keyword);
+			if($this->database){
+				$this->setModel(new SurveysModel());
+				$this->setView(getViewByName('SurveysView'));
+			}
+			else{
+				$this->setView(getViewByName('Default'));
+			}
+
+		}
+
+		else{
+			$this->setModel(new MessageModel());
+			$this->getModel()->setMessage("Vous devez entrer un mot clé avant de lancer la recherche");
+			$this->setView(getViewByName("Message"));
+		}
 	}
 
 }

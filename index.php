@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 function getActionByName($name) {
@@ -14,24 +14,26 @@ function getViewByName($name) {
 }
 
 function getAction() {
+
 	if (!isset($_REQUEST['action'])) $action = 'Default';
 	else $action = $_REQUEST['action'];
-
 	$actions = array('Default',
 			/*'SignUpForm',
-			'SignUp',
+			'SignUp',*/
 			'Logout',
 			'Login',
-			'UpdateUserForm',
+			/*'UpdateUserForm',
 			'UpdateUser',
 			'AddSurveyForm',
 			'AddSurvey',
-			'GetMySurveys',
+			'GetMySurveys',*/
 			'Search',
-			'Vote'*/);
+			/*'Vote'*/);
 
 	if (!in_array($action, $actions)) $action = 'Default';
+
 	return getActionByName($action);
+
 }
 
 $action = getAction();

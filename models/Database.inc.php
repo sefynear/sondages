@@ -47,8 +47,8 @@ class Database {
 	 * @return boolean True si le pseudonyme est valide, false sinon.
 	 */
 	private function checkNicknameValidity($nickname) {
-		/* TODO  */
-		return true;
+
+		return preg_match('^[a-zA-Z]{3,10}$', $nickname);
 	}
 
 	/**
@@ -59,8 +59,8 @@ class Database {
 	 * @return boolean True si le mot de passe est valide, false sinon.
 	 */
 	private function checkPasswordValidity($password) {
-		/* TODO  */
-		return true;
+
+		return preg_match('^.{3,10}$', $password);
 	}
 
 	/**

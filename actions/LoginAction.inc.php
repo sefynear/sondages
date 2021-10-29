@@ -16,7 +16,22 @@ class LoginAction extends Action {
 	 * @see Action::run()
 	 */
 	public function run() {
-		/* TODO  */
+		$nickname = $_POST['nickname'];
+		$password = $_POST['password'];
+
+		$this->setModel(new Model());
+		if(!$this->database->checkPassword($nickname, $password)){
+			$this->getModel()->setLoginError('erreur');
+		}
+		else{
+			$this->getModel()->setLogin(htmlentities($nickname));
+			$this->setSessionLogin(htmlentities($nickname));
+		}
+
+		$this->setView(getViewByName('Default'));
+
+
+
 	}
 
 }
